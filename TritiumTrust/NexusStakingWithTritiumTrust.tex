@@ -51,20 +51,20 @@ The concept of Proof-of-Stake was first introduced in 2012 by King \& Nadal\foot
 
 \noindent Early incarnations of Proof-of-Stake built around the idea of \textit{coin age}, defined as a measure of the holding period for the currency. Upon reaching a specified coin age, the currency owner would gain the ability to stake a new block on the blockchain.\\
 
-\noindent This design was elegant in how it solved the issue of energy efficiency, while having the drawback that the currency owner didn't have to do anything. They could simply leave their wallet off, only activating it upon reaching the age level needed to generate blocks and earn rewards.\\
+\noindent This design was elegant in how it solved the issue of energy efficiency, while having the drawback that the currency owner didn't have to do anything. They could simply leave their wallet off, only activating it upon reaching the age level needed to generate blocks and earn rewards, without otherwise contributing to the network as a whole.\\
 
-\noindent As a result, Proof-of-Stake was gradually refined. It remained a form of energy efficient mining, but evolved into a mechanism whereby currency holders can earn rewards proportional to the size of their holdings by keeping a node up and running at all (or nearly all) times, thus contributing to the operation and security of the blockchain network.\\
+\noindent As a result, Proof-of-Stake was gradually refined. It remained a form of energy efficient mining, but evolved into a mechanism whereby currency holders can earn rewards proportional to the size of their holdings in return for keeping a node up and running at all (or nearly all) times, thus contributing to the operation and security of the blockchain network.\\
 
 \subsubsection{Staking Concepts}
 
 \paragraph{Time} ~\\
-Proof-of-stake introduced the use of time as an input to mining, initially through the use of coin age. Using time in this manner inhibits the application of raw computational power to solve blocks more quickly, thus promoting energy efficiency. Requiring a significant time investment also introduces an external cost to staking that improves network security. 
+Proof-of-Stake introduced the use of time as an input to mining, initially through the use of coin age. Using time in this manner inhibits the application of raw computational power to solve blocks more quickly, thus promoting energy efficiency. Requiring a significant time investment also introduces an external cost to staking that improves network security. 
 
 \paragraph{Weight} ~\\
 Different Proof-of-Stake systems use varying ideas for the concept of weight. Basically, all of these introduce an approach where the ability of currency owners is weighted in such a manner that some have a higher chance to generate blocks than others. Coin age based systems often weighted based on number of coins owned, so if two people had the same holding period, but one had twice as many coins as the other, that one would have twice as much opportunity to generate staking blocks.
 
 \paragraph{Minting Rate} ~\\
-This rate, expressed as a percentage, is used to calculate the size of the coinstake reward in a Proof-of-Stake block. Over time, it has become commonly referred to as interest rate because it operates in a similar manner and people already have an understanding of that term. But anyone staking should understand that their coins are not actually earning interest. They are earning staking rewards in return for helping operate and secure the blockchain network.\\
+This rate, expressed as a percentage, is used to calculate the size of the coinstake reward in a Proof-of-Stake block. Over time, it has become commonly referred to as \textit{interest rate} because it operates in a similar manner and people already have an understanding of that term. But anyone staking should understand that their coins are not actually earning interest. They are earning staking rewards in return for helping operate and secure the blockchain network.\\
 
 \noindent Defining the minting rate is an important aspect of a staking system. Too low and rewards are not significant enough to encourage nodes to stake. Too high and the resulting inflation of the currency supply will erode its value, especially when compounded over time.
 
@@ -74,7 +74,7 @@ A pure Proof-of-Stake based currency suffers from a chicken-and-egg problem that
 \noindent Nexus has realized the value of this type of multi-channel system as it relates to network security, and uses 3 minting channels, two based on Proof-of-Work and one based on Proof-of-Stake. This system also supports initial distribution via the Proof-of-Work channels.
 
 \paragraph{Nothing At Stake Problem} ~\\
-Proof-of-work mining requires the consumption of large amounts of energy, which is a valuable resource. A basic Proof-of-Stake system, on the other hand, only uses resources already within the network, and you don’t lose anything for behaving dishonestly or signing all blocks on any fork in the chain, then attempting to build on all forks. There is no cost or “nothing at stake” for doing so. It is a hypothetical problem that nevertheless must be addressed by any staking system.\\
+Proof-of-Work mining requires the consumption of large amounts of energy, which is a valuable resource. A basic Proof-of-Stake system, on the other hand, only uses resources already within the network, and you don’t lose anything for behaving dishonestly or signing all blocks on any fork in the chain, then attempting to build on all forks. There is no cost or “nothing at stake” for doing so. It is a hypothetical problem that nevertheless must be addressed by any staking system.\\
 
 \noindent In addition to other benefits, the use of multiple channels in Nexus also addresses this problem, as the disparate channels keep each other honest. The Nexus network also employs checkpoints that protect against attacks, and introduces the concept of trust (see below) to create a cost to misbehavior. 
 
@@ -113,18 +113,18 @@ Upon creating a new trust key, the network immediately begins to build trust on 
     \caption{Trust Weight \label{fig:trustWeight}}
 \end{wrapfigure}
 
-\noindent Trust is measured by the key’s trust score, which initially equals the age of the trust key. As long as the key does not undergo decay (see section 3.5) or get penalized for misbehavior, trust score will continue to grow in this manner.\\
+\noindent Trust is measured by the key’s trust score, which initially equals the age of the trust key. As long as the key does not undergo Decay (see section 3.5) or get penalized for misbehavior, trust score will continue to grow in this manner.\\
 
 \noindent The trust score reflects the network’s level of trust in the node as a measure of the time it has been operating and producing new blocks in an honest and trustworthy manner. The significant investment in time needed to build trust score enhances the security of the overall network.\\
 
 \noindent The trust score is used to calculate Trust Weight. Increased Trust Weight improves the chances of successfully staking a new block.\\
 
-\noindent Figure \ref{fig:trustWeight} depicts how Trust Weight, expressed as a percentage of maximum value, grows as trust score, expressed as days of time, increases.\\
+\noindent Figure \ref{fig:trustWeight} depicts how Trust Weight, expressed as a percentage of maximum value, grows as accrued trust score, expressed as days of time, increases.\\
 
 \subsection{Interest Rate}
 The size of the staking reward is based on the current interest rate (minting rate) for the wallet’s trust key. The Genesis process uses a base rate of 0.5\% (annual). After Genesis, future Trust transactions use an interest rate derived from the trust score.\\
 
-\noindent This interest rate will range from the base rate of 0.5\% up to a maximum of 3.0\% after the trust key has accrued one year worth of aggregate trust score. \\
+\noindent This annual interest rate ranges from the base rate of 0.5\% to a maximum of 3.0\% after the trust key has accrued one year worth of aggregate trust score. \\
 
 \begin{figure}[h!]
     \centering
@@ -137,9 +137,9 @@ The size of the staking reward is based on the current interest rate (minting ra
 \subsection{Block Weight}
 To continue accruing trust score, a wallet must successfully generate a new Trust transaction within a three day time requirement. The use of Block Weight serves two functions in this respect.\\
 
-\noindent First, it acts as a timer. When Block Weight reaches 100\%, the trust key will begin to undergo decay (see section 3.5).\\
+\noindent First, it acts as a timer. When Block Weight reaches 100\%, the trust key will begin to undergo Decay (see section 3.5).\\
 
-\noindent Second, a higher value for Block Weight increases the chances of successfully staking a block. Thus, as it gets closer to the 3-day time limit, chances to generate the required Trust transaction increase.\\
+\noindent Second, a higher value for Block Weight increases the chances of successfully staking a block. Thus, as it gets closer to the three day time limit, chances to generate the required Trust transaction increase.\\
 
 \begin{figure}[h!]
     \centering
@@ -157,7 +157,7 @@ Tritium Trust introduces the process of Decay if staking fails to generate a Tru
 
 \noindent Where $T_s$ = new trust score, $T_p$ = prior trust score at last transaction, $B_t$ = time since last stake block, and 259200 is three days expressed in seconds.\\
 
-\noindent Normally, Trust Weight depicted in Figure \ref{fig:trustWeight} moves forward along the curve as trust score grows. During decay, you can think about it as moving backwards along the same curve. The same would be true of Interest Rate in Figure \ref{fig:interestRate}. \\
+\noindent Normally, Trust Weight depicted in Figure \ref{fig:trustWeight} moves forward along the curve as trust score grows. During Decay, you can think about it as moving backwards along the same curve. The same would be true of Interest Rate in Figure \ref{fig:interestRate}. \\
 
 \noindent If, at any time, the wallet finds a new stake block and generates a Trust transaction, Block Weight is reset, Decay ends, and trust score begins accruing again from that point. \\
 
@@ -170,11 +170,11 @@ Tritium Trust introduces the process of Decay if staking fails to generate a Tru
 \section{Beginning Staking with a New Wallet}
 
 \subsection{Establishing a Trust Key}
-Trust is not something that is easily earned in real life. Nor is it easily established in Nexus Proof-of-Stake. Establishing a new trust key is a process. This process can take some time, especially for those staking with smaller balances.\\
+Trust is not something easily earned in real life. Nor is it easily established in Nexus Proof-of-Stake. Establishing a new trust key is a process. This process can take some time, especially when staking with smaller balances.\\
 
-\noindent After Genesis, Trust Weight is low so transactions are less frequent. It is normal that a new key might not earn a Trust transaction within the required 3-day period. The key is also new, so Decay will immediately reduce trust score and interest rate back to starting values (the trust level of its prior transaction) as soon as Block Weight reaches 100\%.\\ 
+\noindent After Genesis, Trust Weight is low and transactions less frequent. It is normal that a new key might not create a Trust transaction within the required three day period. As the key is new, Decay immediately reduces trust score to its starting value (the trust level of its prior transaction) when Block Weight reaches 100\%.\\ 
 
-\noindent From that point, Block Weight will stay at 100\%, while Trust Weight and Interest Rate stay at minimum starting values (1.11\% and 0.5\% respectively). These value will not change until it finds a staking block and generates a Trust transaction. Then, Trust Weight and Interest Rate begin to grow again.\\
+\noindent From that point, Block Weight will stay at 100\%, while Trust Weight and Interest Rate stay at minimum starting values (1.11\% and 0.5\% respectively). These values will not change until the node finds a staking block and generates a Trust transaction. Then, trust score will begin to grow again.\\
 
 \noindent This cycle may repeat multiple times before a new key can generate enough Trust transactions to successfully establish itself and continue growing. This is normal. It is all part of earning trust.\\
 
@@ -187,12 +187,15 @@ There is no minimum balance for staking with Tritium Trust on the Nexus network.
 The Genesis process requires a minimum coin age of 72 hours before allowing the wallet to stake. A new wallet that just received its first NXS must wait this long to begin staking. Any sending or receiving of balance affects coin age, also, which may impact the ability to start staking. 
 
 \paragraph{Maturity} ~\\
-Staking is a form of mining, and, as with Proof-of-Work, must wait a minimum period for a staking transaction to mature. For Nexus, maturity takes 120 blocks (about 90 minutes). During this time, the wallet balance will not be available for other use. 
+Staking is a form of mining, and, as with Proof-of-Work, must wait a minimum period for a staking transaction to mature. For Nexus, maturity takes 120 blocks (around 90 minutes). During this time, the wallet balance will not be available for other use. 
+
+\paragraph{Three Day Requirement} ~\\
+As previously noted, a wallet must successfully generate a new Trust transaction within three days of its prior one. If not, the trust score will experience Decay. \\
 
 \bigskip
 
 \section{Technicals}
-This section revises and replaces the technical details originally published in the Nexus white paper. \footnote{Nexus: A Peer-to-Peer Network \url{https://nexusearth.com/nexus-white-paper/}}
+This section specifies how Tritium Trust revises and replaces the technical details originally published in the Nexus white paper.\footnote{Nexus: A Peer-to-Peer Network \url{https://nexusearth.com/nexus-white-paper/}}
 
 \subsection{Trust Weight}
 \noindent Nexus Proof-of-Stake uses two distinct calculations to determine current Trust Weight, one based on coin age during the Genesis process and one based on current trust score for the remainder of staking.\\
@@ -227,7 +230,7 @@ This section revises and replaces the technical details originally published in 
 \subsection{Staking Rewards}
 \paragraph{Genesis Transaction} ~\\
 \begin{equation}
-\resizebox{.50\hsize}{!}{$S_{r} = \frac{C_{w} \cdot 0.005 \cdot a_c}{31449600}$}
+\resizebox{.40\hsize}{!}{$S_{r} = \frac{C_{w} \cdot 0.005 \cdot a_c}{31449600}$}
 \end{equation}
 
 \noindent Where $C_{w}$ is the current wallet balance and $S_{r}$ is the staking reward.
@@ -236,18 +239,18 @@ This section revises and replaces the technical details originally published in 
 The Trust reward has two possible components. The first part is the reward for balance staked on the trust key, based on the block time (time since last Trust transaction). The second part accounts for any new balance added to the wallet. This balance only earns rewards for the time since adding it.\\
 
 \begin{equation}
-\resizebox{.50\hsize}{!}{$S_{t} = \frac{C_{t} \cdot R_{m} \cdot B_{t}}{31449600}$}
+\resizebox{.40\hsize}{!}{$S_{t} = \frac{C_{t} \cdot R_{m} \cdot B_{t}}{31449600}$}
 \end{equation}
 
 \noindent Where $C_{t}$ is the trust key balance, $B_{t}$ is the block time, and $S_{t}$ is the staking reward from the trust key.\\
 
 \begin{equation}
-\resizebox{.50\hsize}{!}{$S_{n} = \frac{C_{n} \cdot R_{m} \cdot a_c}{31449600}$}
+\resizebox{.40\hsize}{!}{$S_{n} = \frac{C_{n} \cdot R_{m} \cdot a_c}{31449600}$}
 \end{equation}
 
 \noindent Where $C_{n}$ is any new balance added to the wallet, $a_c$ is the coin age of that new balance, and $S_{n}$ is the staking reward from any new balance. This balance is then transferred to the trust key for further staking.\\
 
-\noindent The total reward for a trust transction $S_{r} = S_{t} + S_{n}$
+\noindent The total reward for a trust transaction $S_{r} = S_{t} + S_{n}$\\
 
 
 \subsection{Block Weight}
