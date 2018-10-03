@@ -20,7 +20,7 @@
 \author{Colin Cantrell\\
 \and Scott Simon}
 
-\date{September 28, 2019}
+\date{October 3, 2018}
     
 \begin{document}
 \pagenumbering{gobble}
@@ -38,7 +38,9 @@
 \bigskip
 
 \section{Introduction}
-The Nexus network operates using three channels for producing valid blocks and minting new NXS currency -- two Proof-of-Work channels and one Proof-of-Stake channel. The original Proof-of-Stake channel introduced the concept of trust as a core component to measure consistent and honest contribution by a node to the Nexus network. With the release of Tritium Trust, this trust system is revised and enhanced. Through it, Nexus has improved its Proof-of-Stake channel for future growth and laid the groundwork for the development of a Trust and Reputation system as well as Trust Locks in future releases of the TAO framework.\footnote{see "The Nexus Three Dimensional Chain Simplified" by gjsteele71\\ \url{https://steemit.com/bitcoin/@gjsteele71/the-nexus-three-dimensional-chain-simplified}} \\ 
+The Nexus network operates using three channels for producing valid blocks and minting new NXS currency -- two Proof-of-Work channels and one Proof-of-Stake channel. The original Proof-of-Stake channel introduced the concept of trust as a core component to measure consistent and honest contribution by a node to the Nexus network. It followed the philosophy of "everyone has time" in rewarding people for consistent time investment.\\
+
+\noindent With the release of Tritium Trust, this trust system is revised and enhanced. Through it, Nexus has improved its Proof-of-Stake channel for future growth and laid the groundwork for the development of a Trust and Reputation system as well as Trust Locks in future releases of the TAO framework.\footnote{see "The Nexus Three Dimensional Chain Simplified" by gjsteele71\\ \url{https://steemit.com/bitcoin/@gjsteele71/the-nexus-three-dimensional-chain-simplified}} \\ 
 
 \noindent This paper discusses the updates in the Tritium Trust release with respect to how they affect Nexus Proof-of-Stake.
 
@@ -76,10 +78,10 @@ A pure Proof-of-Stake based currency suffers from a chicken-and-egg problem that
 \paragraph{Nothing At Stake Problem} ~\\
 Proof-of-Work mining requires the consumption of large amounts of energy, which is a valuable resource. A basic Proof-of-Stake system, on the other hand, only uses resources already within the network, and you don’t lose anything for behaving dishonestly or signing all blocks on any fork in the chain, then attempting to build on all forks. There is no cost or “nothing at stake” for doing so. It is a hypothetical problem that nevertheless must be addressed by any staking system.\\
 
-\noindent In addition to other benefits, the use of multiple channels in Nexus also addresses this problem, as the disparate channels keep each other honest. The Nexus network also employs checkpoints that protect against attacks, and introduces the concept of trust (see below) to create a cost to misbehavior. 
+\noindent In addition to other benefits, the use of multiple channels in Nexus also addresses this problem, as the disparate channels keep each other honest. The Nexus network also uses the concept of trust to create a cost to misbehavior. 
 
 \paragraph{51\% Attack} ~\\
-As with other forms of mining, Proof-of-Stake systems can potentially be exposed to a 51\% attack that gives the attacker control of the network. Under this type of system, however, it requires an attacker to gain control of 51\% of the currency on the network. This becomes incredibly expensive to do, and thus highly unlikely, especially when a staking system combines it with a significant time requirement for generating staking weight.\\
+As with other forms of mining, Proof-of-Stake systems can potentially be exposed to a 51\% attack that gives the attacker control of the network. Under this type of system, however, it requires an attacker to gain control of at least 51\% of the currency on the network. This becomes incredibly expensive to do, and thus highly unlikely, especially when you add limitations to block frequency and combine it with a significant time requirement for generating staking weight.\\
 
 \noindent Within Nexus, not only is it highly unlikely a 51\% attack could occur on the Proof-of-Stake channel, but an attacker would also have to gain control of both Proof-of-Work channels to be successful. \\
 
@@ -91,6 +93,7 @@ The Tritium Trust release builds on the previous Nexus Proof-of-Stake system. It
 \subsection{Genesis}
 Before a new wallet can stake successfully on the Nexus network, it must first create a trust key. This key is created by successfully mining its first 
 Proof-of-Stake block, a process referred to as Genesis. The initial coinstake transaction is thus the Genesis transaction. \\
+
 
 \begin{wrapfigure}{r}{0.63\textwidth}
     \centering
@@ -165,6 +168,15 @@ Tritium Trust introduces the process of Decay if staking fails to generate a Tru
 
 \noindent The time investment that it takes to build trust score, combined with this introduction of the ability to both add and subtract trust score, also supports administration of trust penalties for misbehavior or dishonesty, and forms the basis for future application as part of a Trust and Reputation system within the Nexus TAO framework.\\
 
+\subsection{Use of Coin Age in Nexus}
+Enough different Proof-of-Stake systems have used coin age in different ways that it becomes a matter of confusion. While this document already shows coin age in the places where Nexus uses it, summing this up in one section will clarify it better.\\
+
+\noindent Nexus primarily uses coin age only during the Genesis process. It determines the minimum time to wait before you can stake new balance. It also determines Trust Weight and the  reward included in the Genesis transaction.\\
+
+\noindent After Genesis, Trust transactions only use trust score, with one exception. It uses coin age when you add new balance to your wallet, and then only when calculating the portion of the staking reward from that new balance. In this manner, you only earn rewards on new balance for the time after adding it to the wallet.\\
+
+\noindent Other than that, the Trust process uses the full current wallet balance when attempting to find staking blocks, including any new balance. Balance changes also have no impact on your trust score.\\
+
 \bigskip
 
 \section{Beginning Staking with a New Wallet}
@@ -181,7 +193,7 @@ Trust is not something easily earned in real life. Nor is it easily established 
 \subsection{Nexus Staking Requirements}
 
 \paragraph{Minimum Balance} ~\\
-There is no minimum balance for staking with Tritium Trust on the Nexus network. The general guideline is to have at least 1000 NXS to successfully establish a new trust key and have it grow. But that is just a guideline. It may take awhile, but a smaller balance could possibly establish a key successfully. Even if it doesn’t, it will still generate occasional Trust transactions that earn staking rewards at the starting Interest Rate.
+No matter how much NXS you have, you can operate a node and stake your balance. For that, you are guaranteed to receive at least the starting 0.5\% Interest Rate. If you have higher balance, you will receive Trust transactions more frequently, and have a higher likelihood of growing trust score and Interest Rate to higher levels.
 
 \paragraph{Minimum Coin Age} ~\\
 The Genesis process requires a minimum coin age of 72 hours before allowing the wallet to stake. A new wallet that just received its first NXS must wait this long to begin staking. Any sending or receiving of balance affects coin age, also, which may impact the ability to start staking. 
