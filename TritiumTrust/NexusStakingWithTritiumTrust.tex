@@ -101,7 +101,7 @@ The concept of Proof-of-Stake was first introduced in 2012 by King \& Nadal\foot
 
 \noindent As a result, Proof-of-Stake was gradually refined. It remained a form of energy efficient mining, but evolved into a mechanism whereby currency holders can earn rewards proportional to the size of their holdings in return for keeping a node up and running at all (or nearly all) times, thus contributing to the operation and security of the blockchain network.\\
 
-\subsubsection{Staking Concepts}
+\subsection{Staking Concepts}
 
 \paragraph{Time} ~\\
 Proof-of-Stake introduced time as an input to mining, initially through the use of coin age. Using time in this manner inhibits the application of raw computational power to solve blocks more quickly, thus promoting energy efficiency. Requiring a significant time investment to stake successfully also introduces an external cost to any potential attacker. This improves network security. 
@@ -112,7 +112,7 @@ Different Proof-of-Stake systems use varying ideas for the concept of weight. Ba
 \paragraph{Minting Rate} ~\\
 This rate, expressed as an annual percentage, is used to calculate the size of the coinstake reward in a PoS block from the time invested in creating it and the overall PoS balance. \\
 
-\noindent As PoS grew more popular, minting rate became more commonly referred to as \textit{interest rate} because it operates in a similar manner and people already have an understanding of that term. However, anyone staking should understand that their coins are not actually earning interest. They are mining staking rewards in return for helping operate and secure the blockchain network.
+\noindent As PoS grew more popular, minting rate became more commonly referred to as \textit{interest rate} because it operates in a similar manner and people already have an understanding of that term. However, anyone staking should understand that their coins are \textbf{not earning interest}. They are \textbf{mining staking rewards} in return for helping operate and secure the blockchain network.
 
 \paragraph{Distribution Problem} ~\\
 A pure PoS-based currency suffers from a chicken-and-egg problem that you cannot mine staking blocks without coins to stake. Those coins must first be minted by another process. Therefore, most currencies that use Proof-of-Stake also employ an initial distribution based on Proof-of-Work mining, at least temporarily.\\
@@ -174,7 +174,7 @@ Upon creating a new trust key, the network immediately begins to build the inter
 
 \noindent As with the Genesis transaction, Trust transactions will also transfer any new NXS sent to the wallet onto the trust key's address for staking. \\
 
-\subsection{Interest Rate}
+\subsection{Interest Rate (Minting Rate of Staking Rewards)}
 Unlike Proof-of Work mining, Nexus Proof-of-Stake does not have a set reward for finding blocks. Instead, the reward size is calculated from the trust key's current Interest Rate (minting rate), the time it took to find the block, and the wallet balance. The Genesis stage uses a fixed rate of 0.5\% (annual). After Genesis, the network determines Interest Rate from its current level of trust, as measured by the accrued trust score.\\
 
 \begin{figure}[h!]
@@ -298,8 +298,8 @@ After Genesis mines the initial PoS block and creates the trust key, Tritium Tru
 \noindent Where $T_{s}$ is the current trust score.\\
 
 
-\subsection{Interest Rate}
-\noindent The staking reward included in the Genesis transaction is calculated using the starting rate of 0.5\%. All subsequent Trust transactions use Interest Rate calculated from accumulated trust score.\\
+\subsection{Interest Rate (Minting Rate of Staking Rewards)}
+\noindent The staking reward included in the Genesis transaction is calculated using the starting rate of 0.5\%. All subsequent rewards for mining PoS blocks use a minting rate calculated from accumulated trust score.\\
  
 \begin{equation}
 \resizebox{.65\hsize}{!}{$R_{m} = \frac{0.025 \cdot ln(\frac{9 \cdot T_{s}}{31449600} + 1)}{ln(10)} + 0.005$}
